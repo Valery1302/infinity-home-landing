@@ -2,267 +2,277 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infinity Home | Iluminación & Domótica</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinity Home | Iluminación & Domótica</title>
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Tus estilos personalizados (celeste/blanco/azul) -->
-  <link rel="stylesheet" href="src/styles.css" />
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/styles.css" />
 
-  <!-- Performance: precarga imágenes clave -->
-  <link rel="preload" as="image" href="img/imagen.jpg" />
-  <link rel="preload" as="image" href="img/logo.png" />
+
+    <link rel="preload" as="image" href="img/imagen.jpg" />
+    <link rel="preload" as="image" href="img/logo.png" />
 </head>
 
 <body class="bg-gray-50 text-gray-800 scroll-smooth">
 
-  <!-- NAV -->
-  <nav class="nav-light fixed w-full z-50 shadow">
-    <div class="max-w-screen mx-auto px-4 flex justify-between items-center py-3">
-      <a href="#inicio" class="flex items-center gap-3">
-        <img src="img/logo.png" alt="Logo Infinity Home" class="h-16 w-auto object-contain" />
-      </a>
+    <!-- NAV -->
+    <nav class="nav-light fixed w-full z-50 shadow">
+        <div class="max-w-screen mx-auto px-4 flex justify-between items-center py-3">
+            <a href="#inicio" class="flex items-center gap-3">
+                <img src="img/logo.png" alt="Logo Infinity Home" class="h-16 w-auto object-contain" />
+            </a>
 
-      <button id="menuBtn"
-        class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-[#0f172a] hover:text-white hover:bg-sky-600 focus:outline-none"
-        aria-label="Abrir menú">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+            <button id="menuBtn"
+                class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-[#0f172a] hover:text-white hover:bg-sky-600 focus:outline-none"
+                aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
 
-      <ul class="hidden md:flex gap-6 font-medium">
-        <li><a href="#inicio" class="nav-link">Inicio</a></li>
-        <li><a href="#servicios" class="nav-link">Servicios</a></li>
-        <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <div id="mobileMenu" class="fixed top-0 right-0 h-full w-72 sm:w-80 bg-white shadow-2xl border-l border-slate-200
-  transform translate-x-full opacity-0 transition-all duration-500 ease-in-out md:hidden z-50">
-    <div class="flex flex-col p-6 space-y-6">
-      <button id="closeMenu" class="self-end text-gray-600 hover:text-sky-600" aria-label="Cerrar menú">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-
-      <a href="#inicio" class="nav-link text-lg">Inicio</a>
-      <a href="#servicios" class="nav-link text-lg">Servicios</a>
-      <a href="#proyectos" class="nav-link text-lg">Proyectos</a>
-      <a href="#contacto" class="nav-link text-lg">Contacto</a>
-    </div>
-  </div>
-
-
-
-  <!-- HERO con imagen -->
-  <header id="inicio" class="relative hero-overlay min-h-screen flex items-center justify-center">
-    <!-- Imagen de fondo (sustituye al video) -->
-    <img src="img/imagen.jpg" alt="Ambiente con iluminación y domótica" class="absolute inset-0 w-full h-full object-cover"
-      fetchpriority="high" />
-    <!-- Capa oscura para legibilidad -->
-    <div class="absolute inset-0 bg-black/60"></div>
-
-    <!-- Contenido del hero -->
-    <div class="relative text-center text-white px-6 max-w-3xl reveal">
-      <h1 class="hero-title font-bold mb-4">Transformamos espacios con tecnología inteligente</h1>
-      <p class="text-lg md:text-xl mb-8">
-        Iluminación y automatización profesional para hogares y empresas
-      </p>
-      <div class="flex items-center gap-4 justify-center">
-        <a href="#proyectos" class="btn-brand">Ver proyectos</a>
-        <a href="#contacto" class="btn-ghost">Solicitar una cotización</a>
-      </div>
-    </div>
-  </header>
-
-  <hr class="hr-soft my-0" />
-
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="py-20 bg-white">
-    <div class="max-w-screen mx-auto px-4 text-center reveal">
-      <h2 class="text-3xl font-bold mb-10">Nuestros Servicios</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="card p-6">
-          <span class="card-badge mb-3">Diseño</span>
-          <img src="img/iluminacionn.png" class="mx-auto mb-4 h-24 w-24 md:h-28 md:w-28 object-contain" alt="Iluminación" />
-          <h3 class="text-xl font-semibold mb-2">Iluminación Arquitectónica</h3>
-          <ul class="text-left list-disc list-inside service-list-dark marker:text-sky-400">
-            <li>Diseño lumínico personalizado</li>
-            <li>Asesoría técnica profesional</li>
-            <li>Instalación certificada</li>
-          </ul>
+            <ul class="hidden md:flex gap-6 font-medium">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
         </div>
-        <div class="card p-6">
-          <span class="card-badge mb-3">Automatización</span>
-          <img src="img/automatizacion.png" class="mx-auto mb-4 h-24 w-24 md:h-28 md:w-28 object-contain"
-            alt="Automatización" />
-          <h3 class="text-xl font-semibold mb-2">Domótica & Control</h3>
-          <ul class="text-left list-disc list-inside service-list-dark marker:text-sky-400">
-            <li>Control de luces y clima</li>
-            <li>Integración con Alexa/Google</li>
-            <li>Seguridad inteligente</li>
-          </ul>
+    </nav>
+
+    <div id="mobileMenu" class="fixed top-0 right-0 h-full w-72 sm:w-80 bg-white shadow-2xl border-l border-slate-200
+  translate-x-full opacity-0 transition-transform duration-500 ease-in-out md:hidden z-50">
+
+        <div class="flex flex-col p-6 space-y-6">
+            <button id="closeMenu" class="self-end text-gray-600 hover:text-sky-600" aria-label="Cerrar menú">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <a href="#inicio" class="nav-link text-lg">Inicio</a>
+            <a href="#servicios" class="nav-link text-lg">Servicios</a>
+            <a href="#proyectos" class="nav-link text-lg">Proyectos</a>
+            <a href="#contacto" class="nav-link text-lg">Contacto</a>
         </div>
-        <div class="card p-6">
-          <span class="card-badge mb-3">Eficiencia</span>
-          <img src="img/eficiencia.png" class="mx-auto mb-4 h-24 w-24 md:h-28 md:w-28 object-contain" alt="Eficiencia" />
-          <h3 class="text-xl font-semibold mb-2">Eficiencia Energética</h3>
-          <ul class="text-left list-disc list-inside service-list-dark marker:text-sky-400">
-            <li>Optimización del consumo</li>
-            <li>Automatización de encendido</li>
-            <li>Monitoreo energético</li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </section>
 
-  <!-- PROYECTOS -->
-  <section id="proyectos" class="py-20 bg-gray-100">
-    <div class="max-w-screen mx-auto px-4 text-center reveal">
-      <h2 class="text-3xl font-bold mb-10">Proyectos Destacados</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <article class="project card overflow-hidden">
-          <img src="img/imagen.jpg" class="project-img" alt="Residencia" />
-          <div class="p-6 text-left">
-            <h3 class="text-xl font-semibold">Residencia Privada</h3>
-            <p class="text-gray-600 mt-2">Diseño de arquitectura, automatización total y diseño lumínico moderno.</p>
-          </div>
-        </article>
-        <article class="project card overflow-hidden">
-          <img src="img/ICON.jpg" class="project-img" alt="Oficinas" />
-          <div class="p-6 text-left">
-            <h3 class="text-xl font-semibold">Edificios y oficinas</h3>
-            <p class="text-gray-600 mt-2">Iluminación y planos arquitectónicos para interiores de casas, edificios y
-              oficinas.</p>
-          </div>
-        </article>
-        <article class="project card overflow-hidden">
-          <img src="img/jardin.jpg" class="project-img" alt="Restaurante" />
-          <div class="p-6 text-left">
-            <h3 class="text-xl font-semibold">Exteriores</h3>
-            <p class="text-gray-600 mt-2">Diseño de jardines, patios y áreas recreativas con iluminación moderna.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
 
-      <!-- Lado izquierdo: información -->
-      <div class="space-y-6">
-        <div class="p-6 bg-white shadow-md rounded-xl border border-gray-100">
-          <div class="flex items-center gap-4">
-            <div class="flex items-center justify-center w-12 h-12 bg-sky-100 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M3 5h2l3.6 7.59a1 1 0 00.9.41h7.1a1 1 0 00.9-.55L21 7H6" />
-              </svg>
+    <header id="inicio" class="relative hero-overlay min-h-screen flex items-center justify-center">
+        <img src="img/imagen.jpg" alt="Ambiente con iluminación y domótica"
+            class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" />
+        <div class="absolute inset-0 bg-black/60"></div>
+
+        <div class="relative text-center text-white px-6 max-w-3xl reveal">
+            <h1 class="hero-title font-bold mb-4">Transformamos espacios con tecnología inteligente</h1>
+            <p class="text-lg md:text-xl mb-8">
+                Iluminación y automatización profesional para hogares y empresas
+            </p>
+            <div class="flex items-center gap-4 justify-center">
+                <a href="#proyectos" class="btn-brand">Ver proyectos</a>
+                <a href="#contacto" class="btn-ghost">Solicitar una cotización</a>
             </div>
-            <div>
-              <h3 class="font-semibold text-gray-800">Contacto</h3>
-              <p class="text-gray-600 text-sm">0984444708</p>
-              <p class="text-gray-600 text-sm">info@infinityhome.com</p>
-            </div>
-          </div>
         </div>
+    </header>
 
-        <div class="p-6 bg-white shadow-md rounded-xl border border-gray-100">
-          <div class="flex items-center gap-4">
-            <div class="flex items-center justify-center w-12 h-12 bg-sky-100 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17.657 16.657L13.414 12.414m0 0a4 4 0 10-5.657-5.657 4 4 0 005.657 5.657z" />
-              </svg>
+    <hr class="hr-soft my-0" />
+
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-20 bg-white">
+        <div class="max-w-screen mx-auto px-4 text-center reveal">
+            <h2 class="text-3xl font-bold mb-10">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <span class="card-badge mb-3">Diseño</span>
+                    <img src="img/iluminacionn.png" class="mx-auto mb-4 h-24 w-24 md:h-28 md:w-28 object-contain"
+                        alt="Iluminación" />
+                    <h3 class="text-xl font-semibold mb-2">Iluminación Arquitectónica</h3>
+                    <ul class="text-left list-disc list-inside service-list-dark marker:text-sky-400">
+                        <li>Diseño lumínico personalizado</li>
+                        <li>Asesoría técnica profesional</li>
+                        <li>Instalación certificada</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <span class="card-badge mb-3">Automatización</span>
+                    <img src="img/automatizacion.png" class="mx-auto mb-4 h-24 w-24 md:h-28 md:w-28 object-contain"
+                        alt="Automatización" />
+                    <h3 class="text-xl font-semibold mb-2">Domótica & Control</h3>
+                    <ul class="text-left list-disc list-inside service-list-dark marker:text-sky-400">
+                        <li>Control de luces y clima</li>
+                        <li>Integración con Alexa/Google</li>
+                        <li>Seguridad inteligente</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <span class="card-badge mb-3">Eficiencia</span>
+                    <img src="img/eficiencia.png" class="mx-auto mb-4 h-24 w-24 md:h-28 md:w-28 object-contain"
+                        alt="Eficiencia" />
+                    <h3 class="text-xl font-semibold mb-2">Eficiencia Energética</h3>
+                    <ul class="text-left list-disc list-inside service-list-dark marker:text-sky-400">
+                        <li>Optimización del consumo</li>
+                        <li>Automatización de encendido</li>
+                        <li>Monitoreo energético</li>
+                    </ul>
+                </div>
             </div>
-            <div>
-              <h3 class="font-semibold text-gray-800">Dirección</h3>
-              <p class="text-gray-600 text-sm">Guayaquil, Ecuador</p>
-              <p class="text-gray-600 text-sm">Samborondón, Moderna Plaza Lc. 27</p>
-            </div>
-          </div>
         </div>
+    </section>
 
-        <div class="p-6 bg-white shadow-md rounded-xl border border-gray-100">
-          <div class="flex items-center gap-4">
-            <div class="flex items-center justify-center w-12 h-12 bg-sky-100 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M8 7V3m8 4V3m-9 8h10m-9 4h10m-9 4h10m-6 4h2" />
-              </svg>
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="py-20 bg-gray-100">
+        <div class="max-w-screen mx-auto px-4 text-center reveal">
+            <h2 class="text-3xl font-bold mb-10">Proyectos Destacados</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="project card overflow-hidden">
+                    <img src="img/imagen.jpg" class="project-img" alt="Residencia" />
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold">Residencia Privada</h3>
+                        <p class="text-gray-600 mt-2">Diseño de arquitectura, automatización total y diseño lumínico
+                            moderno.</p>
+                    </div>
+                </article>
+                <article class="project card overflow-hidden">
+                    <img src="img/ICON.jpg" class="project-img" alt="Oficinas" />
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold">Edificios y oficinas</h3>
+                        <p class="text-gray-600 mt-2">Iluminación y planos arquitectónicos para interiores de casas,
+                            edificios y
+                            oficinas.</p>
+                    </div>
+                </article>
+                <article class="project card overflow-hidden">
+                    <img src="img/jardin.jpg" class="project-img" alt="Restaurante" />
+                    <div class="p-6 text-left">
+                        <h3 class="text-xl font-semibold">Exteriores</h3>
+                        <p class="text-gray-600 mt-2">Diseño de jardines, patios y áreas recreativas con iluminación
+                            moderna.</p>
+                    </div>
+                </article>
             </div>
-            <div>
-              <h3 class="font-semibold text-gray-800">Horario</h3>
-              <p class="text-gray-600 text-sm">Lunes a Sábados: 9:30 AM – 8:00 PM</p>
-              <p class="text-gray-600 text-sm">Domingos: 9:30 AM – 7:00 PM</p>
-            </div>
-          </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Lado derecho: formulario -->
-      <div class="lg:col-span-2 bg-white shadow-md rounded-2xl p-8 border border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">Contáctanos</h2>
-        <p class="text-gray-600 mb-8">Cuéntanos sobre tu proyecto y nos comunicaremos contigo.</p>
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
 
-        <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input type="text" id="nombre" placeholder="Nombre completo" class="form-input" required>
-          <input type="email" id="correo" placeholder="Correo electrónico" class="form-input" required>
-          <input type="text" id="telefono" placeholder="Teléfono" class="form-input" required>
-          <input type="text" id="asunto" placeholder="Asunto" class="form-input" required>
-          <textarea id="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." rows="4"
-            class="form-input md:col-span-2" required></textarea>
-          <button type="submit"
-            class="md:col-span-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 rounded-lg transition">
-            Enviar mensaje
-          </button>
-        </form>
-        <p id="respuesta" class="mt-4 text-gray-700 font-medium"></p>
-      </div>
-    </div>
-  </section>
+            <!-- Lado izquierdo: información -->
+            <div class="space-y-6">
+                <div class="p-6 bg-white shadow-md rounded-xl border border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-sky-100 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5h2l3.6 7.59a1 1 0 00.9.41h7.1a1 1 0 00.9-.55L21 7H6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Contacto</h3>
+                            <p class="text-gray-600 text-sm">0984444708</p>
+                            <p class="text-gray-600 text-sm">info@infinityhome.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white shadow-md rounded-xl border border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-sky-100 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 12.414m0 0a4 4 0 10-5.657-5.657 4 4 0 005.657 5.657z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Dirección</h3>
+                            <p class="text-gray-600 text-sm">Guayaquil, Ecuador</p>
+                            <p class="text-gray-600 text-sm">Samborondón, Moderna Plaza Lc. 27</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white shadow-md rounded-xl border border-gray-100">
+                    <div class="flex items-center gap-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-sky-100 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10m-9 4h10m-9 4h10m-6 4h2" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Horario</h3>
+                            <p class="text-gray-600 text-sm">Lunes a Sábados: 9:30 AM – 8:00 PM</p>
+                            <p class="text-gray-600 text-sm">Domingos: 9:30 AM – 7:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white shadow-md rounded-2xl p-8 border border-gray-100">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Contáctanos</h2>
+                <p class="text-gray-600 mb-8">Cuéntanos sobre tu proyecto y nos comunicaremos contigo.</p>
+
+                <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" id="nombre" placeholder="Nombre completo" class="form-input" required>
+                    <input type="email" id="correo" placeholder="Correo electrónico" class="form-input" required>
+                    <input type="text" id="telefono" placeholder="Teléfono" class="form-input" required>
+                    <input type="text" id="asunto" placeholder="Asunto" class="form-input" required>
+                    <textarea id="mensaje" placeholder="Cuéntanos más sobre tu proyecto..." rows="4"
+                        class="form-input md:col-span-2" required></textarea>
+                    <button type="submit"
+                        class="md:col-span-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 rounded-lg transition">
+                        Enviar mensaje
+                    </button>
+                </form>
+                <p id="respuesta" class="mt-4 text-gray-700 font-medium"></p>
+            </div>
+        </div>
+    </section>
 
 
-  <!-- SECCIÓN INTERACTIVA: MAPA -->
-  <section id="ubicacion" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Encuéntranos</h2>
-      <p class="text-gray-600 mb-8">Visita nuestro showroom y descubre cómo transformar tu hogar con tecnología
-        inteligente.</p>
+    <!--MAPA -->
+    <section id="ubicacion" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Encuéntranos</h2>
+            <p class="text-gray-600 mb-8">Visita nuestro showroom y descubre cómo transformar tu hogar con tecnología
+                inteligente.</p>
 
-      <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-[450px]">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.0624871185414!2d-79.86630242594855!3d-2.129671097851334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d13d851462397%3A0xa10506e1d5f50db2!2sInfinityHome!5e0!3m2!1ses-419!2sec!4v1762143694366!5m2!1ses-419!2sec"
-          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200 h-[450px]">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.0624871185414!2d-79.86630242594855!3d-2.129671097851334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902d13d851462397%3A0xa10506e1d5f50db2!2sInfinityHome!5e0!3m2!1ses-419!2sec!4v1762143694366!5m2!1ses-419!2sec"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      </div>
-    </div>
-  </section>
-  <!-- For Tailwind CDN safety -->
-  <div class="hidden translate-x-full translate-x-0"></div>
-
+            </div>
+        </div>
+    </section>
+    <div class="hidden translate-x-full translate-x-0"></div>
 
 
-  <footer class="bg-gray-800 text-center footer-muted py-6">
-    <p>© 2025 Infinity Home | <a href="#inicio">Volver arriba</a></p>
-  </footer>
 
-  <!-- Firebase + App JS  -->
-  <script type="module" src="js/script.js"></script>
+    <footer class="bg-gray-800 text-center footer-muted py-6">
+        <p>© 2025 Infinity Home | <a href="#inicio">Volver arriba</a></p>
+    </footer>
+
+   <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getDatabase, ref, push, serverTimestamp, query, limitToLast, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    import("./js/script.js");
+  });
+</script>
+
+<div id="overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-500"></div>
+
 </body>
 
 </html>

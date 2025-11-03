@@ -1,11 +1,9 @@
-/* =========================
-   Variables & reset suave
-========================= */
+
 :root{
-  --brand: #38bdf8;         /* Celeste - sky-400 */
-  --brand-dark: #0284c7;    /* Azul - sky-600 */
-  --bg-dark: #1f4469;       /* Navy profundo */
-  --text-muted: #6b7280;    /* Gray-500 */
+  --brand: #38bdf8;         
+  --brand-dark: #0284c7;    
+  --bg-dark: #1f4469;       
+  --text-muted: #6b7280;    
   --ring: 0 0 0 3px rgba(56, 189, 248, .35);
 }
 
@@ -23,7 +21,6 @@ body { accent-color: var(--brand); }
    NAV y HERO
 ========================= */
 
-/* Header claro que resalta */
 .nav-light{
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -35,9 +32,8 @@ body { accent-color: var(--brand); }
   transition: background .3s ease, box-shadow .3s ease;
 }
 
-/* Logo más visible */
 .nav-light img {
-  height: 64px;                        /* más grande que el default */
+  height: 64px;                      
   width: auto;
   transition: transform .3s ease;
 }
@@ -45,9 +41,8 @@ body { accent-color: var(--brand); }
   transform: scale(1.05);
 }
 
-/* Enlaces del nav */
 .nav-link{
-  color: #0f172a;                      /* azul oscuro */
+  color: #0f172a;                      
   font-weight: 600;
   transition: color .2s ease, transform .2s ease;
 }
@@ -56,7 +51,6 @@ body { accent-color: var(--brand); }
   transform: translateY(-2px);
 }
 
-/* Hero (imagen de fondo) */
 .hero-overlay{
   position: relative;
 }
@@ -69,12 +63,11 @@ body { accent-color: var(--brand); }
   pointer-events: none;
 }
 .service-list-dark{
-  color: #e5e7ebab;          /* blanco/gris muy claro */
+  color: #e5e7ebab;         
 }
-.service-list-dark li{ opacity: 1; }  /* asegura 100% opacidad */
-/* =========================
-   TARJETAS
-========================= */
+.service-list-dark li{ opacity: 1; } 
+
+
 .card{
   border-radius: 14px;
   background: #cfc8c8;
@@ -98,7 +91,6 @@ body { accent-color: var(--brand); }
   border-radius: 999px;
 }
 
-/* Imágenes de proyectos con efecto */
 .project-img{
   display: block;
   width: 100%;
@@ -251,8 +243,29 @@ body { accent-color: var(--brand); }
 }
 
 /* =========================
-   DARK MODE
+   HERO TITLE RESPONSIVE FIX
 ========================= */
+.hero-title {
+  font-size: clamp(2rem, 7vw, 3.5rem); 
+  line-height: 1.2;
+  text-wrap: balance;
+  word-break: keep-all;
+  margin-bottom: 1rem;
+}
+
+/* Mejora para pantallas pequeñas */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem; /* tamaño más legible en móvil */
+    padding: 0 1rem;
+  }
+
+  .hero-title + p {
+    font-size: 1.1rem;
+  }
+}
+
+
 @media (prefers-color-scheme: dark){
   body{
     background: #0b1220;
@@ -271,16 +284,30 @@ body { accent-color: var(--brand); }
     color: #9ca3af;
   }
 }
+/* =========================
+   MOBILE MENU FIX 
+========================= */
 #mobileMenu {
   background-color: #ffffff !important;
   backdrop-filter: none !important;
-  z-index: 60 !important;
+  z-index: 9999 !important; /* <- antes tenías 60 */
   box-shadow: -4px 0 20px rgba(0,0,0,0.15);
+  transition: transform 0.5s ease, opacity 0.4s ease;
 }
 
-/* =========================
-   CONTACTO estilo Inazuma
-========================= */
+
+#mobileMenu.translate-x-0 {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#mobileMenu.translate-x-full {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+
+
 .form-input {
   width: 100%;
   border: 1px solid #e5e7eb;
