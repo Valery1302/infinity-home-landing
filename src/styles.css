@@ -307,7 +307,6 @@ body { accent-color: var(--brand); }
 }
 
 
-
 .form-input {
   width: 100%;
   border: 1px solid #e5e7eb;
@@ -324,4 +323,39 @@ body { accent-color: var(--brand); }
   background-color: #ffffff;
   border-color: #38bdf8;
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+/* ===================
+   HERO BUTTONS 
+======================*/
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.4rem;
+  line-height: 1.1;
+  text-align: center;
+}
+
+
+.hero-actions {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+@media (max-width: 640px) {
+  .hero-actions {
+    flex-direction: row;       
+    gap: 0.5rem;
+  }
+  .btn-hero {
+    flex: 1;                    
+    font-size: 0.95rem;
+    white-space: nowrap;        
+    min-height: 3.25rem;
+  }
 }

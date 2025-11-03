@@ -72,11 +72,10 @@
             <p class="text-lg md:text-xl mb-8">
                 Iluminación y automatización profesional para hogares y empresas
             </p>
-            <div class="flex items-center gap-4 justify-center">
-                <a href="#proyectos" class="btn-brand">Proyectos</a>
-                <a href="#contacto" class="btn-ghost">Solicitar una cotización</a>
+            <div class="hero-actions">
+                <a href="#proyectos" class="btn-brand btn-hero">Proyectos</a>
+                <a href="#contacto" class="btn-ghost btn-hero">Solicitar una cotización</a>
             </div>
-        </div>
     </header>
 
     <hr class="hr-soft my-0" />
@@ -262,16 +261,17 @@
         <p>© 2025 Infinity Home | <a href="#inicio">Volver arriba</a></p>
     </footer>
 
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getDatabase, ref, push, serverTimestamp, query, limitToLast, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getDatabase, ref, push, serverTimestamp, query, limitToLast, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
-  document.addEventListener("DOMContentLoaded", () => {
-    import("./js/script.js");
-  });
-</script>
+        document.addEventListener("DOMContentLoaded", () => {
+            import("./js/script.js");
+        });
+    </script>
 
-<div id="overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-500"></div>
+    <div id="overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-500">
+    </div>
 
 </body>
 
