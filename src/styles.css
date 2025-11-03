@@ -253,10 +253,10 @@ body { accent-color: var(--brand); }
   margin-bottom: 1rem;
 }
 
-/* Mejora para pantallas pequeñas */
+
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.2rem; /* tamaño más legible en móvil */
+    font-size: 2.2rem; 
     padding: 0 1rem;
   }
 
