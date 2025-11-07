@@ -1,6 +1,4 @@
-// ===============================
 // Firebase Configuración
-// ===============================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { getDatabase, ref, push, set, serverTimestamp, get } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
 
@@ -17,11 +15,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-// ===============================
 // FUNCIONES CRUD con Firebase
-// ===============================
 
-// 🔹 CREATE: guardar datos 
+
 const saveDatos = async (data) => {
   try {
     const datosRef = ref(db, "datos");
@@ -37,7 +33,6 @@ const saveDatos = async (data) => {
   }
 };
 
-// 🔹 READ: obtener datos guardados
 const getDatos = async () => {
   try {
     const datosRef = ref(db, "datos");
@@ -62,9 +57,8 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// ===============================
 // FORMULARIO DE CONTACTO
-// ===============================
+
 const form = document.getElementById('contactForm');
 const resp = document.getElementById('respuesta');
 
@@ -103,9 +97,8 @@ if (form) {
   });
 }
 
-// ===============================
-// MENÚ MÓVIL
-// ===============================
+// ----------MENÚ MÓVIL---------------
+
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
 const closeMenu = document.getElementById("closeMenu");
@@ -132,3 +125,82 @@ if (menuBtn && closeMenu && mobileMenu && overlay) {
   mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenuFn));
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenuFn(); });
 }
+// -------- MODAL AUTOMATIZACIÓN (VIDEO HTML5) --------
+const btnAutomatizacion   = document.querySelector('[data-service="domotica"]') || document.getElementById('btnAutomatizacion');
+const modalAutomatizacion = document.getElementById('modalAutomatizacion');
+const closeAutomatizacion = document.getElementById('closeAutomatizacion');
+
+function openAuto() {
+  modalAutomatizacion.classList.remove('opacity-0','pointer-events-none');
+  modalAutomatizacion.classList.add('opacity-100');
+
+  const v   = document.getElementById('vidAutomatizacion');
+  const btn = document.getElementById('toggleSound');
+  const fp  = document.getElementById('forcePlay');
+
+  if (!v) return;
+
+  v.muted = true;
+  btn.textContent = 'Activar sonido';
+
+  v.play().catch(() => {
+    if (fp) fp.classList.remove('hidden');
+  });
+
+  fp?.addEventListener('click', () => {
+    v.play().then(() => fp.classList.add('hidden')).catch(()=>{});
+  }, { once: true });
+
+  btn?.addEventListener('click', () => {
+    // Un gesto de usuario permite activar audio
+    v.muted = !v.muted;
+    if (v.paused) v.play().catch(()=>{});
+    btn.textContent = v.muted ? 'Activar sonido' : 'Silenciar';
+  });
+}
+
+function closeAuto() {
+  modalAutomatizacion.classList.add('opacity-0','pointer-events-none');
+  modalAutomatizacion.classList.remove('opacity-100');
+
+  const v  = document.getElementById('vidAutomatizacion');
+  const fp = document.getElementById('forcePlay');
+  const btn= document.getElementById('toggleSound');
+
+  if (v) {
+    v.pause();
+    v.currentTime = 0;
+    v.muted = true;
+  }
+  // reset UI
+  if (fp) fp.classList.add('hidden');
+  if (btn) btn.textContent = 'Activar sonido';
+}
+
+btnAutomatizacion?.addEventListener('click', openAuto);
+closeAutomatizacion?.addEventListener('click', closeAuto);
+modalAutomatizacion?.addEventListener('click', (e) => { if (e.target === modalAutomatizacion) closeAuto(); });
+window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAuto(); });
+
+
+// ----------- MODAL INSTALACIÓN DE LUMINARIA-----------
+const btnInstalacion = document.querySelector('[data-service="iluminacion"]');
+const modalInstalacion = document.getElementById('modalInstalacion');
+const closeInstalacion = document.getElementById('closeInstalacion');
+
+if (btnInstalacion && modalInstalacion && closeInstalacion) {
+  btnInstalacion.addEventListener('click', () => {
+    modalInstalacion.classList.remove('opacity-0', 'pointer-events-none');
+    modalInstalacion.classList.add('opacity-100');
+  });
+
+  const closeInst = () => {
+    modalInstalacion.classList.add('opacity-0', 'pointer-events-none');
+    modalInstalacion.classList.remove('opacity-100');
+  };
+
+  closeInstalacion.addEventListener('click', closeInst);
+  modalInstalacion.addEventListener('click', (e) => { if (e.target === modalInstalacion) closeInst(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeInst(); });
+}
+
