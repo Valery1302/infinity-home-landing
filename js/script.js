@@ -203,4 +203,25 @@ if (btnInstalacion && modalInstalacion && closeInstalacion) {
   modalInstalacion.addEventListener('click', (e) => { if (e.target === modalInstalacion) closeInst(); });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeInst(); });
 }
+// ----------- MODAL DISEÑO & DECORACIÓN -----------
+const btnDiseno   = document.querySelector('[data-service="diseno"]') || document.querySelector('[data-service="eficiencia"]');
+const modalDiseno = document.getElementById('modalDiseno');
+const closeDiseno = document.getElementById('closeDiseno');
+
+if (btnDiseno && modalDiseno && closeDiseno) {
+  const openD = () => {
+    modalDiseno.classList.remove('opacity-0', 'pointer-events-none');
+    modalDiseno.classList.add('opacity-100');
+  };
+  const closeD = () => {
+    modalDiseno.classList.add('opacity-0', 'pointer-events-none');
+    modalDiseno.classList.remove('opacity-100');
+  };
+
+  btnDiseno.addEventListener('click', openD);
+  closeDiseno.addEventListener('click', closeD);
+  modalDiseno.addEventListener('click', (e) => { if (e.target === modalDiseno) closeD(); });
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeD(); });
+}
+
 

@@ -2,8 +2,8 @@
 :root{
   --brand: #38bdf8;         
   --brand-dark: #0284c7;    
-  --bg-dark: #1f4469;       
-  --text-muted: #6b7280;    
+  --bg-dark: #a1a9b1;       
+  --text-muted: #3f65b1;    
   --ring: 0 0 0 3px rgba(56, 189, 248, .35);
 }
 
@@ -63,15 +63,15 @@ body { accent-color: var(--brand); }
   pointer-events: none;
 }
 .service-list-dark{
-  color: #e5e7ebab;         
+  color: #ccd3e0ab;         
 }
 .service-list-dark li{ opacity: 1; } 
 
 
 .card{
   border-radius: 14px;
-  background: #cfc8c8;
-  color: #d0d6e4;
+  background: #02011dfa;
+  color: #eef0f3;
   box-shadow: 0 6px 24px rgba(9, 25, 99, 0.06);
   transition: transform .25s ease, box-shadow .25s ease;
 }
@@ -281,7 +281,7 @@ body { accent-color: var(--brand); }
     color: #e5e7eb;
   }
   .form-field::placeholder{
-    color: #9ca3af;
+    color: #3864b1;
   }
 }
 /* =========================
