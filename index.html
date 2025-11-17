@@ -142,35 +142,106 @@
     <section id="proyectos" class="py-20 bg-gray-100">
         <div class="max-w-screen mx-auto px-4 text-center reveal">
             <h2 class="text-3xl font-bold mb-10">Proyectos Destacados</h2>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="project card overflow-hidden">
-                    <img src="img/imagen.jpg" class="project-img" alt="Residencia" />
+                <!-- Residencia -->
+                <article
+                    class="group relative bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <img src="img/imagen.jpg" class="w-full h-56 md:h-64 object-cover" alt="Residencia Privada">
+                    <!-- overlay -->
+                    <div
+                        class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                        <!-- ver galería -->
+                        <button class="rounded-xl bg-white/95 hover:bg-white p-3 shadow"
+                            data-gallery="img/resi1.jpg,img/resi2.jpg,img/resi3.jpg" data-title="Residencia Privada" aria-label="Ver galería">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zm3-8H9m4 0V9m0 2v2" />
+                            </svg>
+                        </button>
+                        <!-- ver detalle -->
+                        <a href="proyecto.html?slug=residencia-privada"
+                            class="rounded-xl bg-white/95 hover:bg-white p-3 shadow" aria-label="Ver detalle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.5 6H18m0 0v4.5M18 6l-7.5 7.5M8.25 6.75H6a1.5 1.5 0 00-1.5 1.5v9A1.5 1.5 0 006 18.75h9a1.5 1.5 0 001.5-1.5v-2.25" />
+                            </svg>
+                        </a>
+                    </div>
                     <div class="p-6 text-left">
                         <h3 class="text-xl font-semibold">Residencia Privada</h3>
-                        <p class="text-gray-400 mt-2">Diseño de arquitectura, automatización total y diseño lumínico
+                        <p class="text-gray-600 mt-2">Diseño de arquitectura, automatización total y diseño lumínico
                             moderno.</p>
                     </div>
                 </article>
-                <article class="project card overflow-hidden">
-                    <img src="img/ICON.jpg" class="project-img" alt="Edificios y oficinas" />
+
+                <!-- Oficinas -->
+                <article
+                    class="group relative bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <img src="img/ICON.jpg" class="w-full h-56 md:h-64 object-cover" alt="Edificios y oficinas">
+                    <div
+                        class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                        <button class="rounded-xl bg-white/95 hover:bg-white p-3 shadow"
+                            data-gallery="img/ofi2.jpg,img/edif2.jpg,img/ofi1.jpg,"
+                            data-title="Edificios y oficinas" aria-label="Ver galería">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zm3-8H9m4 0V9m0 2v2" />
+                            </svg>
+                        </button>
+                        <a href="proyecto.html?slug=edificios-oficinas"
+                            class="rounded-xl bg-white/95 hover:bg-white p-3 shadow" aria-label="Ver detalle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.5 6H18m0 0v4.5M18 6l-7.5 7.5M8.25 6.75H6a1.5 1.5 0 00-1.5 1.5v9A1.5 1.5 0 006 18.75h9a1.5 1.5 0 001.5-1.5v-2.25" />
+                            </svg>
+                        </a>
+                    </div>
                     <div class="p-6 text-left">
                         <h3 class="text-xl font-semibold">Edificios y oficinas</h3>
-                        <p class="text-gray-400 mt-2">Iluminación y planos arquitectónicos para interiores de casas,
-                            edificios y
-                            oficinas.</p>
+                        <p class="text-gray-600 mt-2">Iluminación y planos arquitectónicos para interiores de casas,
+                            edificios y oficinas.</p>
                     </div>
                 </article>
-                <article class="project card overflow-hidden">
-                    <img src="img/jardin.jpg" class="project-img" alt="Jardines" />
+
+                <!-- Exteriores -->
+                <article
+                    class="group relative bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition">
+                    <img src="img/jardin.jpg" class="w-full h-56 md:h-64 object-cover" alt="Exteriores">
+                    <div
+                        class="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition flex items-center justify-center gap-3">
+                        <button class="rounded-xl bg-white/95 hover:bg-white p-3 shadow"
+                            data-gallery="img/ext1.jpg,img/ext2.jpg,img/ext3.jpg"
+                             data-title="Exteriores" aria-label="Ver galería">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zm3-8H9m4 0V9m0 2v2" />
+                            </svg>
+                        </button>
+                        <a href="proyecto.html?slug=exteriores" class="rounded-xl bg-white/95 hover:bg-white p-3 shadow"
+                            aria-label="Ver detalle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.5 6H18m0 0v4.5M18 6l-7.5 7.5M8.25 6.75H6a1.5 1.5 0 00-1.5 1.5v9A1.5 1.5 0 006 18.75h9a1.5 1.5 0 001.5-1.5v-2.25" />
+                            </svg>
+                        </a>
+                    </div>
                     <div class="p-6 text-left">
                         <h3 class="text-xl font-semibold">Exteriores</h3>
-                        <p class="text-gray-400 mt-2">Diseño de jardines, patios y áreas recreativas con iluminación
+                        <p class="text-gray-600 mt-2">Diseño de jardines, patios y áreas recreativas con iluminación
                             moderna.</p>
                     </div>
                 </article>
             </div>
         </div>
     </section>
+
 
     <!-- CONTACTO -->
     <section id="contacto" class="py-20 bg-gray-50">
@@ -492,18 +563,37 @@
             <figure class="mt-5">
                 <img src="img/diseno.jpg" alt="diseño y decoración virtual"
                     class="w-full h-auto max-h-[340px] object-cover rounded-xl shadow-md" loading="lazy"
-                    decoding="async"> 
+                    decoding="async">
             </figure>
 
             <div class="mt-6 text-center"></div>
-                <a href="#contacto"
-                    class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 px-6 rounded-lg transition">
-                    Solicitar una cotización
-                </a>
-            </div>
+            <a href="#contacto"
+                class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2.5 px-6 rounded-lg transition">
+                Solicitar una cotización
+            </a>
         </div>
     </div>
     </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="fixed inset-0 z-[70] bg-black/90 hidden">
+        <button id="lbClose" class="absolute top-4 right-4 text-white text-3xl z-[80]" aria-label="Cerrar">×</button>
+        <button id="lbPrev" class="absolute left-3  top-1/2 -translate-y-1/2 text-white text-3xl px-3 z-[80]"
+            aria-label="Anterior">❮</button>
+        <button id="lbNext" class="absolute right-3 top-1/2 -translate-y-1/2 text-white text-3xl px-3 z-[80]"
+            aria-label="Siguiente">❯</button>
+
+        <div class="absolute inset-0 grid place-items-center p-4">
+            <figure class="w-full max-w-5xl">
+                <img id="lbImg" class="w-full h-auto max-h-[78vh] object-contain rounded-xl shadow-lg hidden" alt="">
+                <video id="lbVid" class="w-full h-auto max-h-[78vh] rounded-xl shadow-lg hidden" controls
+                    playsinline></video>
+                <figcaption id="lbCap" class="text-center text-white/80 mt-3"></figcaption>
+            </figure>
+        </div>
+    </div>
+
 
 
 

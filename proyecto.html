@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Proyecto | Infinity Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <nav class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur border-b">
+        <div class="max-w-screen mx-auto px-4 py-3 flex items-center">
+            <button id="btnBack"
+                class="p-2 -ml-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                aria-label="Volver">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-black" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <header class="pt-20">
+        <div class="max-w-screen mx-auto px-4">
+            <h1 id="title" class="text-3xl font-bold mb-1"></h1>
+            <p id="subtitle" class="text-gray-600"></p>
+        </div>
+        <div id="hero" class="w-full bg-gray-200"></div>
+    </header>
+
+    <main class="max-w-screen mx-auto px-4 py-10 grid lg:grid-cols-3 gap-10">
+        <section class="lg:col-span-2">
+            <div id="masonry" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </div>
+        </section>
+        <aside class="lg:sticky lg:top-24 h-fit space-y-5">
+            <div class="p-5 bg-white rounded-2xl shadow border">
+                <h3 class="font-semibold mb-2">Ficha del proyecto</h3>
+                <ul id="facts" class="text-sm text-gray-700 space-y-1"></ul>
+            </div>
+            <div class="p-5 bg-white rounded-2xl shadow border">
+                <h3 class="font-semibold mb-2">Tecnologías</h3>
+                <div id="tags" class="flex flex-wrap gap-2"></div>
+            </div>
+            <a href="index.html#contacto"
+                class="block text-center bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 rounded-xl">Solicitar
+                cotización</a>
+        </aside>
+    </main>
+
+    <section class="max-w-screen mx-auto px-4 pb-16">
+        <div id="videoWrap" class="hidden mx-auto max-w-4xl rounded-2xl overflow-hidden shadow bg-black">
+            <video id="projVideo" class="w-full h-[700px] md:h-[450px] object-cover" controls playsinline muted autoplay
+                loop></video>
+        </div>
+    </section>
+
+    <script type="module">
+        const DB = {
+            "residencia-privada": {
+                title: "Residencia Privada",
+                subtitle: "Automatización Lutron, Kichler y diseño lumínico",
+                hero: "img/proyectos/res1_cover.jpg",
+                gallery: ["img/resi1.jpg", "img/resi2.jpg", "img/resi3.jpg", "img/resi4.jpg"],
+                video: "videos/video-residencia.mp4",
+                facts: [["Ubicación", "Olón, Samborondón, Guayaquil, EC"], ["Alcance", "Diseño + instalación + escenas"], ["Año", "2025"]],
+                tags: ["Lutron", "Kichler Connects", "LED 3000K", "Sonos"]
+            },
+            "edificios-oficinas": {
+                title: "Edificios y oficinas",
+                subtitle: "Control centralizado y eficiencia energética",
+                gallery: ["img/edif1.jpg", "img/ofi1.jpg", "img/ofi2.jpg", "img/edif2.jpg"],
+                video: "videos/video-edificio.mp4",
+                facts: [["Ubicación", "Guayaquil, EC"], ["Alcance", "Iluminación + control"], ["Año", "2025"]],
+                tags: ["Sensores presencia", "DALI/0-10V"]
+            },
+            "exteriores": {
+                title: "Exteriores",
+                subtitle: "Patios lumínicos",
+                gallery: ["img/ext1.jpg", "img/ext2.jpg", "img/ext3.jpg", "img/ext4.jpg"],
+                video: "videos/video-exteriores.mp4",
+                facts: [["Grado IP", "IP65"], ["Control", "Kichler Connects"]],
+                tags: ["Balizas", "Uplights", "RGBW"]
+            }
+        };
+
+        const slug = new URLSearchParams(location.search).get('slug') || 'residencia-privada';
+        const p = DB[slug] || DB["residencia-privada"];
+
+        document.getElementById('title').textContent = p.title;
+        document.getElementById('subtitle').textContent = p.subtitle;
+        document.getElementById('hero').style.background = `center/cover url('${p.hero}')`;
+
+        const masonry = document.getElementById('masonry');
+        p.gallery.forEach(src => {
+            const f = document.createElement('figure');
+            f.className = "mb-4 break-inside-avoid";
+            f.innerHTML = `
+            <img src="${src}"
+            alt=""class="w-full h-56 sm:h-64 lg:h-72 object-cover rounded-xl shadow" />`;
+
+            masonry.appendChild(f);
+        });
+        p.facts.forEach(([k, v]) => {
+            document.getElementById('facts')
+                .insertAdjacentHTML('beforeend', `<li><span class="text-gray-500">${k}:</span> ${v}</li>`);
+        });
+        p.tags.forEach(t => {
+            document.getElementById('tags')
+                .insertAdjacentHTML('beforeend', `<span class="px-3 py-1 rounded-full text-sm bg-sky-100 text-sky-700">${t}</span>`);
+        });
+        if (p.video) {
+            const wrap = document.getElementById('videoWrap'); const v = document.getElementById('projVideo');
+            v.src = p.video; wrap.classList.remove('hidden');
+        }
+    </script>
+    <script type="module" src="js/script.js"></script>
+
+</body>
+
+</html>

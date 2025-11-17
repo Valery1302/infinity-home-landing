@@ -126,17 +126,17 @@ if (menuBtn && closeMenu && mobileMenu && overlay) {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenuFn(); });
 }
 // -------- MODAL AUTOMATIZACIÓN (VIDEO HTML5) --------
-const btnAutomatizacion   = document.querySelector('[data-service="domotica"]') || document.getElementById('btnAutomatizacion');
+const btnAutomatizacion = document.querySelector('[data-service="domotica"]') || document.getElementById('btnAutomatizacion');
 const modalAutomatizacion = document.getElementById('modalAutomatizacion');
 const closeAutomatizacion = document.getElementById('closeAutomatizacion');
 
 function openAuto() {
-  modalAutomatizacion.classList.remove('opacity-0','pointer-events-none');
+  modalAutomatizacion.classList.remove('opacity-0', 'pointer-events-none');
   modalAutomatizacion.classList.add('opacity-100');
 
-  const v   = document.getElementById('vidAutomatizacion');
+  const v = document.getElementById('vidAutomatizacion');
   const btn = document.getElementById('toggleSound');
-  const fp  = document.getElementById('forcePlay');
+  const fp = document.getElementById('forcePlay');
 
   if (!v) return;
 
@@ -148,24 +148,24 @@ function openAuto() {
   });
 
   fp?.addEventListener('click', () => {
-    v.play().then(() => fp.classList.add('hidden')).catch(()=>{});
+    v.play().then(() => fp.classList.add('hidden')).catch(() => { });
   }, { once: true });
 
   btn?.addEventListener('click', () => {
     // Un gesto de usuario permite activar audio
     v.muted = !v.muted;
-    if (v.paused) v.play().catch(()=>{});
+    if (v.paused) v.play().catch(() => { });
     btn.textContent = v.muted ? 'Activar sonido' : 'Silenciar';
   });
 }
 
 function closeAuto() {
-  modalAutomatizacion.classList.add('opacity-0','pointer-events-none');
+  modalAutomatizacion.classList.add('opacity-0', 'pointer-events-none');
   modalAutomatizacion.classList.remove('opacity-100');
 
-  const v  = document.getElementById('vidAutomatizacion');
+  const v = document.getElementById('vidAutomatizacion');
   const fp = document.getElementById('forcePlay');
-  const btn= document.getElementById('toggleSound');
+  const btn = document.getElementById('toggleSound');
 
   if (v) {
     v.pause();
@@ -204,7 +204,7 @@ if (btnInstalacion && modalInstalacion && closeInstalacion) {
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeInst(); });
 }
 // ----------- MODAL DISEÑO & DECORACIÓN -----------
-const btnDiseno   = document.querySelector('[data-service="diseno"]') || document.querySelector('[data-service="eficiencia"]');
+const btnDiseno = document.querySelector('[data-service="diseno"]') || document.querySelector('[data-service="eficiencia"]');
 const modalDiseno = document.getElementById('modalDiseno');
 const closeDiseno = document.getElementById('closeDiseno');
 
@@ -224,4 +224,76 @@ if (btnDiseno && modalDiseno && closeDiseno) {
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeD(); });
 }
 
+// --------- Helpers ----------
+const $ = (id) => document.getElementById(id);
 
+// --------- Lightbox  ----------
+const lb = $("lightbox"), img = $("lbImg"), vid = $("lbVid"),
+      cap = $("lbCap"), btnC = $("lbClose"), btnP = $("lbPrev"), btnN = $("lbNext");
+
+let items = [], i = 0;
+
+const show = (k) => {
+  if (!items.length) return;
+  i = (k + items.length) % items.length;
+  const it = items[i];
+
+  if (it.type === "video") {
+    img?.classList.add("hidden"); if (img) img.src = "";
+    if (vid) {
+      vid.classList.remove("hidden");
+      vid.src = it.src; vid.currentTime = 0;
+      vid.muted = true; vid.playsInline = true; vid.autoplay = true;
+      vid.play().catch(()=>{});
+    }
+  } else {
+    if (vid) { vid.pause(); vid.classList.add("hidden"); vid.src = ""; }
+    if (img) { img.classList.remove("hidden"); img.src = it.src; }
+  }
+  if (cap) cap.textContent = it.caption || "";
+};
+
+const open = (gallery = [], video = "", title = "") => {
+  items = gallery.map(s => ({ type: "img", src: s.trim(), caption: title }));
+  if (video) items.push({ type: "video", src: video.trim(), caption: title });
+  if (!items.length) return;
+  document.body.classList.add("overflow-hidden");
+  lb?.classList.remove("hidden");
+  const one = items.length < 2; btnP && (btnP.disabled = one); btnN && (btnN.disabled = one);
+  show(0);
+};
+
+const close = () => {
+  lb?.classList.add("hidden");
+  document.body.classList.remove("overflow-hidden");
+  if (vid) { vid.pause(); vid.src = ""; }
+  if (img) img.src = "";
+  items = []; i = 0;
+};
+
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("[data-gallery]");
+  if (!el) return;
+  const gal = (el.dataset.gallery || "").split(",").map(s=>s.trim()).filter(Boolean);
+  open(gal, el.dataset.video || "", el.dataset.title || "");
+});
+
+btnC?.addEventListener("click", close);
+btnP?.addEventListener("click", () => show(i - 1));
+btnN?.addEventListener("click", () => show(i + 1));
+lb?.addEventListener("click", (e) => e.target === lb && close());
+window.addEventListener("keydown", (e) => {
+  if (lb?.classList.contains("hidden")) return;
+  if (e.key === "Escape") close();
+  if (e.key === "ArrowLeft" && items.length > 1) show(i - 1);
+  if (e.key === "ArrowRight" && items.length > 1) show(i + 1);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const back = $("btnBack"); if (!back) return;
+  back.addEventListener("click", () => {
+    if (document.referrer && new URL(document.referrer).origin === location.origin) return history.back();
+    const base = location.href.replace(/proyecto\.html.*$/,"");
+    location.href = base + "index.html#proyectos";
+  });
+});
