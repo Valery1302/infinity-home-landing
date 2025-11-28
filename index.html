@@ -224,8 +224,8 @@
                                     d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zm3-8H9m4 0V9m0 2v2" />
                             </svg>
                         </button>
-                        <a href="/proyecto.html?slug=exteriores" class="rounded-xl bg-white/95 hover:bg-white p-3 shadow"
-                            aria-label="Ver detalle">
+                        <a href="/proyecto.html?slug=exteriores"
+                            class="rounded-xl bg-white/95 hover:bg-white p-3 shadow" aria-label="Ver detalle">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -320,6 +320,11 @@
                 <p id="respuesta" class="mt-4 text-gray-700 font-medium"></p>
             </div>
         </div>
+        <div id="listaDatos" class="mt-8 p-6 bg-white shadow rounded-xl">
+            <h3 class="text-xl font-bold mb-4">Registros enviados</h3>
+            <ul id="datosContainer" class="space-y-3 text-gray-700"></ul>
+        </div>
+
     </section>
 
 
@@ -346,15 +351,6 @@
     <footer class="bg-gray-800 text-center footer-muted py-6">
         <p>© 2025 Infinity Home | <a href="#inicio">Volver arriba</a></p>
     </footer>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getDatabase, ref, push, serverTimestamp, query, limitToLast, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
-
-        document.addEventListener("DOMContentLoaded", () => {
-            import("./js/script.js");
-        });
-    </script>
 
     <div id="overlay" class="fixed inset-0 bg-black/50 opacity-0 pointer-events-none transition-opacity duration-500">
     </div>

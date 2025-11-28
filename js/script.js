@@ -61,7 +61,33 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 const form = document.getElementById('contactForm');
 const resp = document.getElementById('respuesta');
+async function mostrarDatos() {
+  const cont = document.getElementById("datosContainer");
+  if (!cont) return;
 
+  cont.innerHTML = "<p class='text-gray-500'>Cargando registros...</p>";
+
+  const res = await getDatos();
+
+  if (res.status !== "success") {
+    cont.innerHTML = "<p class='text-gray-500'>No hay registros aún.</p>";
+    return;
+  }
+
+  const entries = Object.values(res.data);
+
+  cont.innerHTML = entries.map(d => `
+    <li class="p-4 border rounded-lg bg-white shadow-sm">
+      <p><strong>Nombre:</strong> ${d.nombre}</p>
+      <p><strong>Correo:</strong> ${d.correo}</p>
+      <p><strong>Teléfono:</strong> ${d.telefono}</p>
+      <p><strong>Asunto:</strong> ${d.asunto}</p>
+      <p><strong>Mensaje:</strong> ${d.mensaje}</p>
+    </li>
+  `).join("");
+}
+
+document.addEventListener("DOMContentLoaded", mostrarDatos);
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -90,7 +116,10 @@ if (form) {
         ? "mt-4 text-green-600 font-medium"
         : "mt-4 text-red-600 font-medium";
 
-    if (result.status === "success") form.reset();
+    if (result.status === "success") {
+      form.reset();
+      mostrarDatos();  
+    }
 
     // Alerta flotante en pantalla
     alert(result.message);
