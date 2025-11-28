@@ -106,10 +106,8 @@ if (form) {
       return;
     }
 
-    // Guardar en Firebase usando saveDatos()
     const result = await saveDatos(data);
 
-    // Mostrar confirmación visual
     resp.textContent = result.message;
     resp.className =
       result.status === "success"
@@ -121,7 +119,6 @@ if (form) {
       mostrarDatos();  
     }
 
-    // Alerta flotante en pantalla
     alert(result.message);
   });
 }
